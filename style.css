@@ -724,11 +724,11 @@ body {
   .profile-photo-col {
     flex: none;
     width: 100%;
-    min-height: 260px;
+    min-height: 400px;
   }
 
   .profile-flip-wrapper {
-    min-height: 260px;
+    min-height: 400px;
   }
 
   /* Keep heads visible when height is reduced */
