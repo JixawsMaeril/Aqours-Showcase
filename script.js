@@ -641,8 +641,8 @@ function initWeatherMachine() {
     const posX = Math.random() * 95;
     particle.style.left = posX + 'vw';
     
-    // Random fall duration (10s to 20s)
-    const duration = Math.random() * 10 + 10;
+    // Random fall duration (8s to 15s)
+    const duration = Math.random() * 7 + 8;
     
     // Assign fall animation
     particle.style.animation = `fall ${duration}s linear forwards`;
@@ -655,14 +655,14 @@ function initWeatherMachine() {
     container.appendChild(particle);
   }
 
-  // Spawn a new particle every 3 seconds, but only when tab is active
-  let spawnInterval = setInterval(spawnParticle, 3000);
+  // Spawn a new particle every 4.5 seconds, but only when tab is active
+  let spawnInterval = setInterval(spawnParticle, 4500);
 
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
       clearInterval(spawnInterval); // Pause spawning when tab is inactive
     } else {
-      spawnInterval = setInterval(spawnParticle, 3000); // Resume when active
+      spawnInterval = setInterval(spawnParticle, 4500); // Resume when active
     }
   });
 

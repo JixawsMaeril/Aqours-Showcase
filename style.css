@@ -133,10 +133,8 @@ body {
   align-items: center;
   overflow: hidden;
   border: 1px solid var(--border);
-  /* Latar belakang dasar card semi-transparan agar partikel tembus pandang */
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  /* Latar belakang dasar card, dioptimalkan tanpa blur agar tidak lag di HP */
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .card-back {
@@ -508,9 +506,7 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 2.5rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid var(--border);
   border-radius: var(--card-radius);
   overflow: hidden;
@@ -728,11 +724,16 @@ body {
   .profile-photo-col {
     flex: none;
     width: 100%;
-    min-height: 340px;
+    min-height: 260px;
   }
 
   .profile-flip-wrapper {
-    min-height: 340px;
+    min-height: 260px;
+  }
+
+  /* Keep heads visible when height is reduced */
+  .profile-avatar.has-image img {
+    object-position: top center;
   }
 
   .profile-avatar {
@@ -742,7 +743,7 @@ body {
   }
 
   .profile-bio-col {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
   }
 
   .profile-name {
@@ -750,7 +751,7 @@ body {
   }
 
   .detail-view {
-    padding: 1.75rem 1rem 3rem;
+    padding: 1rem 0.75rem 2rem;
   }
 }
 
@@ -781,7 +782,7 @@ body {
   }
 
   .profile-bio-col {
-    padding: 1.25rem 1rem;
+    padding: 0.85rem 0.85rem;
   }
 
   .profile-fields {
