@@ -596,6 +596,21 @@ audioPlayer.addEventListener('ended', function () {
   btns[nextIdx].click();
 });
 
+/* Pause music when tab is hidden, resume when active */
+let wasPlayingBeforeHidden = false;
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    wasPlayingBeforeHidden = !audioPlayer.paused;
+    if (wasPlayingBeforeHidden) {
+      audioPlayer.pause();
+    }
+  } else {
+    if (wasPlayingBeforeHidden) {
+      audioPlayer.play().catch(function() {});
+    }
+  }
+});
+
 
 
 
