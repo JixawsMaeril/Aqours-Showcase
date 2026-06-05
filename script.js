@@ -596,14 +596,7 @@ audioPlayer.addEventListener('ended', function () {
   btns[nextIdx].click();
 });
 
-/* Auto-play on first user interaction */
-let hasStarted = false;
-document.addEventListener('click', function () {
-  if (!hasStarted && audioPlayer.paused) {
-    audioPlayer.play().catch(function () {});
-    hasStarted = true;
-  }
-}, { once: true });
+
 
 
 /* ============================================
