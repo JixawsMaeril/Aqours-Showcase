@@ -728,11 +728,11 @@ body {
   .profile-photo-col {
     flex: none;
     width: 100%;
-    min-height: 220px;
+    min-height: 340px;
   }
 
   .profile-flip-wrapper {
-    min-height: 220px;
+    min-height: 340px;
   }
 
   .profile-avatar {
@@ -742,7 +742,7 @@ body {
   }
 
   .profile-bio-col {
-    padding: 1.75rem;
+    padding: 1.5rem 1.25rem;
   }
 
   .profile-name {
@@ -778,6 +778,22 @@ body {
     width: 90px;
     height: 90px;
     font-size: 1.5rem;
+  }
+
+  .profile-bio-col {
+    padding: 1.25rem 1rem;
+  }
+
+  .profile-fields {
+    gap: 0.4rem 0.75rem;
+  }
+
+  .profile-fields dt {
+    font-size: 0.65rem;
+  }
+
+  .profile-fields dd {
+    font-size: 0.8rem;
   }
 }
 
