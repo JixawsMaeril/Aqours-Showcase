@@ -1,0 +1,1058 @@
+/* ============================================
+   Aqours Character & Seiyuu Showcase
+   Design System & Styles
+   ============================================ */
+
+/* ---------- Reset & Base ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f8f7f4;
+  --bg-header: #ffffff;
+  --text-primary: #2c2c2c;
+  --text-secondary: #6b6b6b;
+  --text-light: #9a9a9a;
+  --border: #e8e6e1;
+  --card-radius: 18px;
+  --transition-speed: 0.5s;
+
+  /* Character accent colors — muted pastels */
+  --chika: #f0c4a0;
+  --riko: #f0b4c0;
+  --kanan: #a0d4c0;
+  --dia: #d4a0a0;
+  --you: #a8cce0;
+  --yoshiko: #bab4c8;
+  --hanamaru: #e8d8a0;
+  --mari: #c8a8d8;
+  --ruby: #f0c0d0;
+
+  /* Detail accent (set by JS) */
+  --detail-accent: #d0d0d0;
+}
+
+html {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+
+/* ============================================
+   Header
+   ============================================ */
+
+.site-header {
+  width: 100%;
+  padding: 1rem 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  background: transparent;
+}
+
+.site-header h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.site-header p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-top: 0.3rem;
+  letter-spacing: 0.02em;
+}
+
+
+/* ============================================
+   List View — Card Grid
+   ============================================ */
+
+.grid-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 4rem;
+}
+
+.grid-container.hidden {
+  display: none;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ---------- Card Flip ---------- */
+.card-wrapper {
+  perspective: 900px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--card-radius);
+}
+
+.card-wrapper:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  /* Latar belakang dasar card semi-transparan agar partikel tembus pandang */
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* ---------- Card Visual ---------- */
+.card-visual {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-visual-bg {
+  position: absolute;
+  inset: 0;
+  /* Opacity warna karakter di bagian atas card */
+  opacity: 0.60;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar img.avatar-logo {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+/* Full frame modifier when using PNGs */
+.avatar.has-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent !important;
+}
+
+.avatar.has-image img {
+  object-fit: cover;
+  object-position: bottom center;
+  border-radius: 0;
+}
+
+/* ---------- Card Info ---------- */
+.card-info {
+  width: 100%;
+  padding: 1.1rem 1.25rem 1.3rem;
+  text-align: center;
+  background: #ffffff;
+}
+
+.card-info .name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.card-info .role {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Accent stripe ---------- */
+.card-face::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+/* ---------- Per-character colors ---------- */
+.card-wrapper[data-member="chika"] .card-visual-bg { background: var(--chika); }
+.card-wrapper[data-member="chika"] .avatar { background: var(--chika); }
+.card-wrapper[data-member="chika"] .card-face::after { background: var(--chika); }
+
+.card-wrapper[data-member="riko"] .card-visual-bg { background: var(--riko); }
+.card-wrapper[data-member="riko"] .avatar { background: var(--riko); }
+.card-wrapper[data-member="riko"] .card-face::after { background: var(--riko); }
+
+.card-wrapper[data-member="kanan"] .card-visual-bg { background: var(--kanan); }
+.card-wrapper[data-member="kanan"] .avatar { background: var(--kanan); }
+.card-wrapper[data-member="kanan"] .card-face::after { background: var(--kanan); }
+
+.card-wrapper[data-member="dia"] .card-visual-bg { background: var(--dia); }
+.card-wrapper[data-member="dia"] .avatar { background: var(--dia); }
+.card-wrapper[data-member="dia"] .card-face::after { background: var(--dia); }
+
+.card-wrapper[data-member="you"] .card-visual-bg { background: var(--you); }
+.card-wrapper[data-member="you"] .avatar { background: var(--you); }
+.card-wrapper[data-member="you"] .card-face::after { background: var(--you); }
+
+.card-wrapper[data-member="yoshiko"] .card-visual-bg { background: var(--yoshiko); }
+.card-wrapper[data-member="yoshiko"] .avatar { background: var(--yoshiko); }
+.card-wrapper[data-member="yoshiko"] .card-face::after { background: var(--yoshiko); }
+
+.card-wrapper[data-member="hanamaru"] .card-visual-bg { background: var(--hanamaru); }
+.card-wrapper[data-member="hanamaru"] .avatar { background: var(--hanamaru); }
+.card-wrapper[data-member="hanamaru"] .card-face::after { background: var(--hanamaru); }
+
+.card-wrapper[data-member="mari"] .card-visual-bg { background: var(--mari); }
+.card-wrapper[data-member="mari"] .avatar { background: var(--mari); }
+.card-wrapper[data-member="mari"] .card-face::after { background: var(--mari); }
+
+.card-wrapper[data-member="ruby"] .card-visual-bg { background: var(--ruby); }
+.card-wrapper[data-member="ruby"] .avatar { background: var(--ruby); }
+.card-wrapper[data-member="ruby"] .card-face::after { background: var(--ruby); }
+
+/* ---------- Sub-unit badges ---------- */
+.subunit-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.65em;
+  border-radius: 6px;
+  margin-top: 0.45rem;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-light);
+}
+
+/* ---------- Card entrance animation ---------- */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-wrapper {
+  animation: card-enter 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.card-wrapper:nth-child(1) { animation-delay: 0.04s; }
+.card-wrapper:nth-child(2) { animation-delay: 0.08s; }
+.card-wrapper:nth-child(3) { animation-delay: 0.12s; }
+.card-wrapper:nth-child(4) { animation-delay: 0.16s; }
+.card-wrapper:nth-child(5) { animation-delay: 0.20s; }
+.card-wrapper:nth-child(6) { animation-delay: 0.24s; }
+.card-wrapper:nth-child(7) { animation-delay: 0.28s; }
+.card-wrapper:nth-child(8) { animation-delay: 0.32s; }
+.card-wrapper:nth-child(9) { animation-delay: 0.36s; }
+
+
+/* ============================================
+   Detail View
+   ============================================ */
+
+.detail-view {
+  display: none;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  position: relative;
+}
+
+/* Full-page accent wash behind detail content */
+.detail-view::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--detail-accent);
+  opacity: 0.08;
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.detail-view.visible {
+  display: block;
+  animation: detail-enter 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes detail-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Back Button ---------- */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.back-btn:hover {
+  background: #ffffff;
+  color: var(--text-primary);
+  border-color: #d0cec9;
+}
+
+.back-btn svg {
+  flex-shrink: 0;
+}
+
+/* ---------- Detail Navigation (Prev / Next) ---------- */
+.detail-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.75rem;
+  padding: 0.75rem 0.25rem;
+  position: relative;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: var(--text-primary);
+  border-color: #d0cec9;
+  background: #fafaf8;
+}
+
+.nav-btn svg {
+  flex-shrink: 0;
+}
+
+.nav-btn-text {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-indicator {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 540px) {
+  .nav-btn-text {
+    max-width: 80px;
+  }
+
+  .nav-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.72rem;
+  }
+}
+
+
+/* ============================================
+   Profile Pane (Character / Seiyuu)
+   ============================================ */
+
+.bio-content {
+  display: none;
+  opacity: 0;
+}
+
+.bio-content.active {
+  display: block;
+  animation: pane-fade-in 0.4s ease forwards;
+}
+
+.bio-content.fading-out {
+  display: block;
+  animation: pane-fade-out 0.3s ease forwards;
+}
+
+@keyframes pane-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pane-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+
+/* ---------- Profile Layout (photo + bio side-by-side) ---------- */
+
+/* Flip Animation Modifiers */
+.profile-layout.anim-out {
+  transition: transform 0.25s ease-in, opacity 0.25s ease-in;
+}
+
+.profile-layout.anim-in {
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.layout-flip-out-next {
+  transform: perspective(1200px) rotateY(-90deg);
+  opacity: 0.4;
+}
+
+.layout-flip-out-prev {
+  transform: perspective(1200px) rotateY(90deg);
+  opacity: 0.4;
+}
+
+.layout-flip-in-next {
+  transition: none !important;
+  transform: perspective(1200px) rotateY(90deg);
+  opacity: 0.4;
+}
+
+.layout-flip-in-prev {
+  transition: none !important;
+  transform: perspective(1200px) rotateY(-90deg);
+  opacity: 0.4;
+}
+
+.profile-layout {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border-top: 3px solid var(--detail-accent);
+}
+
+/* ---------- Photo Column (3D Flip) ---------- */
+.profile-photo-col {
+  flex: 0 0 280px;
+  min-height: 360px;
+  perspective: 1000px;
+}
+
+.profile-flip-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Flip trigger */
+.profile-layout.show-seiyuu .profile-flip-wrapper {
+  transform: rotateY(180deg);
+}
+
+.profile-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.profile-flip-front {
+  pointer-events: auto;
+}
+
+.profile-flip-back {
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.profile-layout.show-seiyuu .profile-flip-front {
+  pointer-events: none;
+}
+
+.profile-layout.show-seiyuu .profile-flip-back {
+  pointer-events: auto;
+}
+
+.profile-flip-face:hover .profile-avatar {
+  transform: scale(1.08);
+}
+
+.profile-flip-face:hover .photo-tap-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo-accent-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--detail-accent);
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+.profile-flip-face:hover .photo-accent-bg {
+  opacity: 0.22;
+}
+
+.profile-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Full frame modifier when using PNGs */
+.profile-avatar.has-image {
+  flex: 1;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent !important;
+  margin-top: 1rem; /* slight breathing room at top */
+}
+
+.profile-avatar.has-image img {
+  object-fit: cover;
+  object-position: bottom center;
+  border-radius: 0;
+}
+
+.photo-tap-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+}
+
+/* ---------- Bio Column ---------- */
+.profile-bio-col {
+  flex: 1;
+  padding: 2.25rem 2.25rem 2.25rem 0;
+}
+
+.profile-type-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.3em 0.8em;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.profile-name-jp {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+.profile-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--detail-accent);
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+/* ---------- Profile Fields (dl grid) ---------- */
+.profile-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6rem 1.25rem;
+}
+
+.profile-fields dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+  white-space: nowrap;
+  padding-top: 0.1em;
+}
+
+.profile-fields dd {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 860px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .profile-layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .profile-photo-col {
+    flex: none;
+    width: 100%;
+    min-height: 220px;
+  }
+
+  .profile-flip-wrapper {
+    min-height: 220px;
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+  }
+
+  .profile-bio-col {
+    padding: 1.75rem;
+  }
+
+  .profile-name {
+    font-size: 1.25rem;
+  }
+
+  .detail-view {
+    padding: 1.75rem 1rem 3rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .site-header {
+    padding: 1.75rem 1rem;
+  }
+
+  .site-header h1 {
+    font-size: 1.15rem;
+  }
+
+  .grid-container {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    font-size: 1.5rem;
+  }
+}
+
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.site-footer {
+  text-align: center;
+  background-color: #a8cce0;
+  padding: 2rem 1rem 1.5rem;
+  font-size: 0.72rem;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.site-footer .footer-credit {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+
+/* ============================================
+   Music Player Bar
+   ============================================ */
+
+.music-bar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* ---------- Toggle Button ---------- */
+.music-toggle {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px 14px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  background: #ffffff;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-right: 1.25rem;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.music-toggle:hover {
+  color: var(--text-primary);
+  background: #fafaf8;
+}
+
+/* Icon visibility — default: show note, hide close */
+.music-icon-close {
+  display: none;
+}
+
+.music-bar.open .music-icon-note {
+  display: none;
+}
+
+.music-bar.open .music-icon-close {
+  display: block;
+}
+
+/* ---------- Panel ---------- */
+.music-panel {
+  width: 420px;
+  max-width: 100vw;
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
+  padding: 0.85rem 1rem 1rem;
+  display: none;
+  animation: music-slide-up 0.3s ease both;
+}
+
+.music-bar.open .music-panel {
+  display: block;
+}
+
+@keyframes music-slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Track Buttons ---------- */
+.music-tracks {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.65rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.music-tracks::-webkit-scrollbar {
+  height: 4px;
+}
+
+.music-tracks::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.music-tracks::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.track-btn {
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: #f5f4f1;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.track-btn:hover {
+  background: #eeedea;
+  color: var(--text-primary);
+}
+
+.track-btn.active {
+  background: var(--text-primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ---------- Audio Controls ---------- */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.15rem 0;
+}
+
+.audio-play-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--text-primary);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.audio-play-btn:hover {
+  opacity: 0.8;
+}
+
+/* Icon toggle: default show play, hide pause */
+.icon-pause {
+  display: none;
+}
+
+.audio-play-btn.playing .icon-play {
+  display: none;
+}
+
+.audio-play-btn.playing .icon-pause {
+  display: block;
+}
+
+.audio-time {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-light);
+  min-width: 30px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.audio-progress-wrap {
+  flex: 1;
+  height: 5px;
+  background: #c8c6c1;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.audio-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--text-primary);
+  border-radius: 4px;
+  transition: width 0.1s linear;
+}
+
+.audio-track-name {
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-align: center;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Music Responsive ---------- */
+@media (max-width: 440px) {
+  .music-panel {
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  .music-toggle {
+    margin-right: 0.75rem;
+  }
+}
+
+/* ============================================
+   Weather Machine - Background Effect
+   ============================================ */
+
+.weather-machine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Behind everything */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.weather-particle {
+  position: absolute;
+  top: -150px;
+  pointer-events: none;
+  opacity: 0.35;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  object-fit: contain; /* Prevents stretching */
+}
+
+/* Fall straight down */
+@keyframes fall {
+  0% {
+    top: -150px;
+  }
+  100% {
+    top: 110vh;
+  }
+}
+
+/* Gentle sway left and right with rotation */
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0) rotate(-15deg);
+  }
+  50% {
+    transform: translateX(40px) rotate(15deg);
+  }
+}
