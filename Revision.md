@@ -14,6 +14,7 @@ Dokumentasi ini menggabungkan seluruh catatan spesifikasi, prompt revisi desain,
 7. [Ubah Discography Menjadi Top 10 Most Popular Songs (`songrev.md`)](#7-ubah-discography-menjadi-top-10-most-popular-songs)
 8. [Redesign Layout Most Popular Songs: Podium + Leaderboard (`songdesign.md`)](#8-redesign-layout-most-popular-songs-podium--leaderboard)
 9. [Moving Collage Background di Home Section (`designhome.md`)](#9-moving-collage-background-di-home-section)
+10. [Fitur Daily Like — Total Like Bersama Semua Pengunjung (`count.md`)](#10-fitur-daily-like--total-like-bersama-semua-pengunjung)
 
 ---
 
@@ -402,3 +403,25 @@ Saya mau menambahkan background berupa kolase foto yang bergerak (moving collage
 ### Batasan
 - Tetap HTML/CSS/JS vanilla, konsisten dengan kode yang sudah ada.
 - Tidak mengganggu interaksi atau keterbacaan elemen hero (judul, CTA button, dsb).
+
+---
+
+## 10. Fitur Daily Like — Total Like Bersama Semua Pengunjung
+*(Sumber asli: `count.md`)*
+
+### Konsep
+Tombol "Press this if you love Aqours ❤️" di section Home. Setiap pengunjung bisa klik **sekali per hari**, dan hitungan total like-nya **sama untuk semua orang** (bukan cuma tersimpan di browser masing-masing) — tanpa perlu bikin backend/database/login sendiri, memanfaatkan counter API publik gratis.
+
+### Cara Kerja
+1. **Total Like (Global via Abacus API)**:
+   - Endpoint: `https://abacus.jasoncameron.dev/get/aqours-showcase/daily-like` (ambil total) & `/hit/aqours-showcase/daily-like` (increment +1).
+   - Format separator ribuan (`1,258`) dengan animasi *count-up* halus.
+2. **Batasan 1x per Hari (localStorage)**:
+   - Menyimpan tanggal hari ini (`YYYY-MM-DD`) di `localStorage['aqours-last-liked']`.
+   - Mengunci tombol ke state disabled dan teks *"Already loved today! Come back tomorrow ✨"*.
+3. **Animasi & Interaksi**:
+   - Denyut ikon hati (*heartbeat animation*).
+   - Efek ledakan partikel hati (*floating heart burst*) saat diklik.
+   - *Bump animation* pada badge angka counter saat bertambah.
+4. **Graceful Fallback**:
+   - Jika jaringan/API offline, sistem secara otomatis memakai angka cache lokal terakhir di `localStorage['aqours-cached-likes']` sehingga UI tidak rusak dan animasi klik lokal tetap berjalan lancar.

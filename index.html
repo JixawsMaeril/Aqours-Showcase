@@ -96,6 +96,24 @@
       <img src="assets/img/Aqours_Logo.webp" alt="Aqours" class="hero-logo" width="280">
       <h1 class="hero-tagline">Character &amp; Seiyuu Showcase</h1>
       <p class="hero-subtitle">School idols from <strong>Uranohoshi Girls' High School</strong></p>
+
+      <!-- Daily Like Feature -->
+      <div class="hero-like-wrapper" id="hero-like-wrapper">
+        <button type="button" class="hero-like-btn" id="hero-like-btn" aria-label="Press this if you love Aqours">
+          <span class="like-icon-wrap" aria-hidden="true">
+            <svg class="like-heart-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </span>
+          <span class="like-btn-text" id="like-btn-text">Press this if you love Aqours ❤️</span>
+          <span class="like-counter-badge" id="like-counter-badge">
+            <span class="like-counter-number" id="like-counter-number">...</span>
+          </span>
+        </button>
+        <div class="like-hint" id="like-hint">1 like per day &bull; Shared across all fans</div>
+        <div class="like-particles-container" id="like-particles-container" aria-hidden="true"></div>
+      </div>
+
       <a href="#members" class="hero-cta" id="hero-cta">
         <span>Meet all the members</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>

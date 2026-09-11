@@ -1032,3 +1032,194 @@ function initScrollReveal() {
 
 initScrollReveal();
 
+
+/* ============================================
+   Daily Like Feature (count.md)
+   ============================================ */
+
+function initDailyLike() {
+  var likeBtn = document.getElementById('hero-like-btn');
+  var likeText = document.getElementById('like-btn-text');
+  var counterBadge = document.getElementById('like-counter-badge');
+  var counterNum = document.getElementById('like-counter-number');
+  var likeHint = document.getElementById('like-hint');
+  var particlesContainer = document.getElementById('like-particles-container');
+
+  if (!likeBtn || !counterNum) return;
+
+  var API_BASE = 'https://abacus.jasoncameron.dev';
+  var NAMESPACE = 'aqours-showcase';
+  var KEY = 'daily-like';
+  var LOCAL_KEY = 'aqours-last-liked';
+  var CACHE_KEY = 'aqours-cached-likes';
+  var FALLBACK_COUNT = 1258;
+
+  // Format today's date YYYY-MM-DD
+  var todayStr = new Date().toISOString().slice(0, 10);
+  var hasLikedToday = localStorage.getItem(LOCAL_KEY) === todayStr;
+
+  // Current counter state
+  var currentCount = parseInt(localStorage.getItem(CACHE_KEY), 10) || FALLBACK_COUNT;
+
+  // Set initial UI based on local storage
+  if (hasLikedToday) {
+    setLikedState(false);
+  }
+
+  // Display initial cached/fallback number
+  counterNum.textContent = currentCount.toLocaleString('en-US');
+
+  // Fetch latest global count from API
+  fetchWithTimeout(API_BASE + '/get/' + NAMESPACE + '/' + KEY, 4000)
+    .then(function (res) {
+      if (!res.ok) throw new Error('Status ' + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      if (data && typeof data.value === 'number') {
+        var newGlobal = data.value;
+        if (newGlobal > currentCount) {
+          currentCount = newGlobal;
+          localStorage.setItem(CACHE_KEY, currentCount);
+          counterNum.textContent = currentCount.toLocaleString('en-US');
+        }
+      }
+    })
+    .catch(function (err) {
+      // Silent fail: continue with cached or fallback count
+      console.warn('Daily Like API: using local cached count', err);
+    });
+
+  // Handle Like click
+  likeBtn.addEventListener('click', function () {
+    if (likeBtn.classList.contains('liked') || likeBtn.disabled) {
+      return;
+    }
+
+    // 1. Immediately disable and mark as liked
+    likeBtn.disabled = true;
+    localStorage.setItem(LOCAL_KEY, todayStr);
+
+    // 2. Spawn playful floating heart particles
+    spawnHeartParticles();
+
+    // 3. Count-up animation (+1)
+    var startVal = currentCount;
+    var targetVal = currentCount + 1;
+    currentCount = targetVal;
+    localStorage.setItem(CACHE_KEY, targetVal);
+
+    if (counterBadge) {
+      counterBadge.classList.remove('bump');
+      void counterBadge.offsetWidth; // trigger reflow
+      counterBadge.classList.add('bump');
+    }
+
+    animateCountUp(counterNum, startVal, targetVal, 700);
+
+    // 4. Update button visual state
+    setLikedState(true);
+
+    // 5. Send increment (+1) to global API
+    fetchWithTimeout(API_BASE + '/hit/' + NAMESPACE + '/' + KEY, 5000)
+      .then(function (res) {
+        if (!res.ok) throw new Error('Status ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && typeof data.value === 'number' && data.value > currentCount) {
+          currentCount = data.value;
+          localStorage.setItem(CACHE_KEY, currentCount);
+          counterNum.textContent = currentCount.toLocaleString('en-US');
+        }
+      })
+      .catch(function (err) {
+        console.warn('Daily Like API hit failed, count preserved locally:', err);
+      });
+  });
+
+  function setLikedState(animate) {
+    likeBtn.classList.add('liked');
+    likeBtn.disabled = true;
+    likeBtn.setAttribute('aria-label', 'Already loved today');
+    likeText.textContent = 'Already loved today! Come back tomorrow ✨';
+    if (likeHint) {
+      likeHint.textContent = "You've sent your love today! See you tomorrow 💖";
+    }
+  }
+
+  function spawnHeartParticles() {
+    if (!particlesContainer) return;
+    var colors = ['#ff4b6e', '#ff7660', '#ff9e58', '#ff69b4', '#ffd166', '#00b4d8'];
+    var heartCount = 10;
+
+    for (var i = 0; i < heartCount; i++) {
+      var heart = document.createElement('span');
+      heart.className = 'floating-heart';
+      heart.innerHTML = '❤️';
+
+      // Random trajectories
+      var angle = (Math.PI * 2 * i) / heartCount + (Math.random() - 0.5) * 0.5;
+      var dist = 50 + Math.random() * 70;
+      var tx = Math.cos(angle) * dist;
+      var ty = Math.sin(angle) * dist - (30 + Math.random() * 40);
+      var rot = (Math.random() - 0.5) * 70;
+      var size = 16 + Math.floor(Math.random() * 14);
+
+      heart.style.fontSize = size + 'px';
+      heart.style.setProperty('--tx', tx + 'px');
+      heart.style.setProperty('--ty', ty + 'px');
+      heart.style.setProperty('--rot', rot + 'deg');
+
+      // Random slight delay
+      heart.style.animationDelay = (Math.random() * 0.1) + 's';
+
+      particlesContainer.appendChild(heart);
+
+      (function (el) {
+        setTimeout(function () {
+          if (el.parentNode) {
+            el.parentNode.removeChild(el);
+          }
+        }, 1300);
+      })(heart);
+    }
+  }
+
+  function animateCountUp(el, start, end, duration) {
+    var startTime = performance.now();
+    function step(currentTime) {
+      var progress = Math.min((currentTime - startTime) / duration, 1);
+      // easeOutCubic
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var current = Math.round(start + (end - start) * ease);
+      el.textContent = current.toLocaleString('en-US');
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = end.toLocaleString('en-US');
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function fetchWithTimeout(url, timeoutMs) {
+    return new Promise(function (resolve, reject) {
+      var timer = setTimeout(function () {
+        reject(new Error('Request timed out'));
+      }, timeoutMs);
+
+      fetch(url)
+        .then(function (res) {
+          clearTimeout(timer);
+          resolve(res);
+        })
+        .catch(function (err) {
+          clearTimeout(timer);
+          reject(err);
+        });
+    });
+  }
+}
+
+initDailyLike();
