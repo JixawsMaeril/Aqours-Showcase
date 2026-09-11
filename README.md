@@ -44,7 +44,3 @@ Interactive One-Page digital showcase for the 9 school idols of **Aqours** (*Lov
 - **JavaScript (ES6+ Vanilla)**: Tanpa dependensi/framework eksternal, performa ringan dan cepat.
 
 ---
-
-## 🚀 Cara Menjalankan
-
-Cukup buka file `index.html` di browser favorit Anda, atau jalankan menggunakan Live Server / static server lokal.
