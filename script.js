@@ -1,6 +1,7 @@
 /* ============================================
    Aqours Showcase — script.js
-   List-Detail pattern with photo-click toggle
+   One-page site with List-Detail member view,
+   About section, and Discography catalog
    ============================================ */
 
 /* ---- Member Data ---- */
@@ -17,7 +18,7 @@ const MEMBERS = {
         'Birthday': 'August 1',
         'Blood Type': 'B',
         'Height': '157 cm',
-        'Hobbies': 'Swimming, Sticker Collecting',
+        'Hobbies': 'Swimming, Peeling Mikans',
       }
     },
     seiyuu: {
@@ -28,9 +29,9 @@ const MEMBERS = {
       fields: {
         'Birthday': 'February 7, 1996',
         'Birthplace': 'Kanagawa',
-        'Blood Type': 'O',
+        'Blood Type': 'B',
         'Agency': 'Sony Music Artists',
-        'Debut': '2015',
+        'Debut': '2013',
         'Nickname': 'Anchan',
       }
     }
@@ -47,7 +48,7 @@ const MEMBERS = {
         'Birthday': 'September 19',
         'Blood Type': 'A',
         'Height': '160 cm',
-        'Hobbies': 'Piano, Composing Music',
+        'Hobbies': 'Piano, Painting, Reading',
       }
     },
     seiyuu: {
@@ -58,8 +59,8 @@ const MEMBERS = {
       fields: {
         'Birthday': 'August 8, 1992',
         'Birthplace': 'Tokyo',
-        'Blood Type': 'Unknown',
-        'Agency': 'Aoni Production',
+        'Blood Type': 'O',
+        'Agency': 'DMM.com / Aoni Production',
         'Debut': '2014',
         'Nickname': 'Rikyako',
       }
@@ -77,7 +78,7 @@ const MEMBERS = {
         'Birthday': 'February 10',
         'Blood Type': 'O',
         'Height': '162 cm',
-        'Hobbies': 'Diving, Fishing',
+        'Hobbies': 'Diving, Ship Handling',
       }
     },
     seiyuu: {
@@ -88,8 +89,8 @@ const MEMBERS = {
       fields: {
         'Birthday': 'November 2, 1994',
         'Birthplace': 'Saitama',
-        'Blood Type': 'Unknown',
-        'Agency': 'Anisma',
+        'Blood Type': 'A',
+        'Agency': 'Stay Luck',
         'Debut': '2015',
         'Nickname': 'Suwawa',
       }
@@ -107,7 +108,7 @@ const MEMBERS = {
         'Birthday': 'January 1',
         'Blood Type': 'A',
         'Height': '162 cm',
-        'Hobbies': 'Reading, Idol Research',
+        'Hobbies': 'Watching Movies, Reading',
       }
     },
     seiyuu: {
@@ -117,8 +118,8 @@ const MEMBERS = {
       image: 'assets/img/seiyuu/arisa-fix.png',
       fields: {
         'Birthday': 'February 5, 1994',
-        'Birthplace': 'Chiba',
-        'Blood Type': 'A',
+        'Birthplace': 'Tochigi',
+        'Blood Type': 'B',
         'Agency': 'Box Corporation',
         'Debut': '2012',
         'Nickname': 'Arisha',
@@ -137,7 +138,7 @@ const MEMBERS = {
         'Birthday': 'April 17',
         'Blood Type': 'AB',
         'Height': '157 cm',
-        'Hobbies': 'Swimming, High Diving',
+        'Hobbies': 'Weight Training, Running',
       }
     },
     seiyuu: {
@@ -148,8 +149,8 @@ const MEMBERS = {
       fields: {
         'Birthday': 'August 16, 1996',
         'Birthplace': 'Saitama',
-        'Blood Type': 'O',
-        'Agency': 'Hornets Entertainment',
+        'Blood Type': 'A',
+        'Agency': 'Holy Peak',
         'Debut': '2015',
         'Nickname': 'Shukashū',
       }
@@ -167,7 +168,7 @@ const MEMBERS = {
         'Birthday': 'July 13',
         'Blood Type': 'O',
         'Height': '156 cm',
-        'Hobbies': 'Little Devil Cosplay, Fortune Telling',
+        'Hobbies': 'Little Demon Fashion, Video Games',
       }
     },
     seiyuu: {
@@ -176,11 +177,11 @@ const MEMBERS = {
       initial: '愛',
       image: 'assets/img/seiyuu/aikyan-fix.png',
       fields: {
-        'Birthday': 'October 23, 1996',
+        'Birthday': 'October 23, 1993',
         'Birthplace': 'Kanagawa',
-        'Blood Type': 'B',
-        'Agency': 'Avex Pictures',
-        'Debut': '2015',
+        'Blood Type': 'O',
+        'Agency': 'Newcome Inc.',
+        'Debut': '2011',
         'Nickname': 'Aikyan',
       }
     }
@@ -197,7 +198,7 @@ const MEMBERS = {
         'Birthday': 'March 4',
         'Blood Type': 'O',
         'Height': '152 cm',
-        'Hobbies': 'Reading, Singing',
+        'Hobbies': 'Reading, Choir',
       }
     },
     seiyuu: {
@@ -206,11 +207,11 @@ const MEMBERS = {
       initial: '佳',
       image: 'assets/img/seiyuu/kanako-fix.png',
       fields: {
-        'Birthday': 'September 25, 1997',
-        'Birthplace': 'Chiba',
-        'Blood Type': 'A',
+        'Birthday': 'September 25, 1993',
+        'Birthplace': 'Hyogo',
+        'Blood Type': 'AB',
         'Agency': 'Amuse',
-        'Debut': '2015',
+        'Debut': '2012',
         'Nickname': 'King',
       }
     }
@@ -227,7 +228,7 @@ const MEMBERS = {
         'Birthday': 'June 13',
         'Blood Type': 'AB',
         'Height': '163 cm',
-        'Hobbies': 'Singing, Horse Riding',
+        'Hobbies': 'Sports, Horse Riding',
       }
     },
     seiyuu: {
@@ -240,7 +241,7 @@ const MEMBERS = {
         'Birthplace': 'Hokkaido',
         'Blood Type': 'O',
         'Agency': 'IAM Agency',
-        'Debut': '2015',
+        'Debut': '2014',
         'Nickname': 'Ainyan',
       }
     }
@@ -257,7 +258,7 @@ const MEMBERS = {
         'Birthday': 'September 21',
         'Blood Type': 'A',
         'Height': '154 cm',
-        'Hobbies': 'Idol Appreciation, Fashion',
+        'Hobbies': 'Needlework, Clothing',
       }
     },
     seiyuu: {
@@ -269,13 +270,78 @@ const MEMBERS = {
         'Birthday': 'February 19, 1994',
         'Birthplace': 'Nagano',
         'Blood Type': 'B',
-        'Agency': 'Crocodile',
-        'Debut': '2015',
-        'Nickname': 'Aiai',
+        'Agency': 'Purple Inc.',
+        'Debut': '2014',
+        'Nickname': 'Aiai / Furirin',
       }
     }
   }
 };
+
+
+/* ---- Top 10 Most Popular Songs (Source: JOYSOUND Karaoke Ranking) ---- */
+var TOP_SONGS = [
+  {
+    rank: 1, title: "Aozora Jumping Heart", year: 2016,
+    single: "Aozora Jumping Heart",
+    gradient: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
+    accent: "#d4a017"
+  },
+  {
+    rank: 2, title: "WATER BLUE NEW WORLD", year: 2018,
+    single: "WATER BLUE NEW WORLD / WONDERFUL STORIES",
+    gradient: "linear-gradient(135deg, #a8c0cc 0%, #d7d2cc 100%)",
+    accent: "#8a8a8a"
+  },
+  {
+    rank: 3, title: "HAPPY PARTY TRAIN", year: 2017,
+    single: "HAPPY PARTY TRAIN",
+    gradient: "linear-gradient(135deg, #cd7f32 0%, #e8b87a 100%)",
+    accent: "#b8733e"
+  },
+  {
+    rank: 4, title: "Koi ni Naritai AQUARIUM", year: 2016,
+    single: "Koi ni Naritai AQUARIUM",
+    gradient: "linear-gradient(135deg, #00b4d8, #48cae4)",
+    accent: "#2e86c1"
+  },
+  {
+    rank: 5, title: "Kimi no Kokoro wa Kagayaiteru kai?", year: 2015,
+    single: "Kimi no Kokoro wa Kagayaiteru kai?",
+    gradient: "linear-gradient(135deg, #1a5276, #2980b9)",
+    accent: "#2e86c1"
+  },
+  {
+    rank: 6, title: "Omoi yo Hitotsu ni Nare", year: 2016,
+    single: "Omoi yo Hitotsu ni Nare / MIRAI TICKET",
+    gradient: "linear-gradient(135deg, #e91e63, #9c27b0)",
+    accent: "#c2185b"
+  },
+  {
+    rank: 7, title: "Yuuki wa doko ni? Kimi no Mune ni!", year: 2017,
+    single: "Yuuki wa doko ni? Kimi no Mune ni!",
+    gradient: "linear-gradient(135deg, #e65100, #ff9800)",
+    accent: "#e65100"
+  },
+  {
+    rank: 8, title: "Yume Kataru yori Yume Utaou", year: 2016,
+    single: "Yume Kataru yori Yume Utaou",
+    gradient: "linear-gradient(135deg, #8e44ad, #d2b4de)",
+    accent: "#8e44ad"
+  },
+  {
+    rank: 9, title: "Mirai no Bokura wa Shitteru yo", year: 2017,
+    single: "Mirai no Bokura wa Shitteru yo",
+    gradient: "linear-gradient(135deg, #1565c0, #42a5f5)",
+    accent: "#1565c0"
+  },
+  {
+    rank: 10, title: "MIRAI TICKET", year: 2016,
+    single: "Omoi yo Hitotsu ni Nare / MIRAI TICKET",
+    gradient: "linear-gradient(135deg, #c2185b, #ad1457)",
+    accent: "#c2185b"
+  }
+];
 
 
 /* ---- Ordered member keys for navigation ---- */
@@ -283,10 +349,11 @@ const MEMBER_KEYS = Object.keys(MEMBERS);
 let currentIndex = 0;
 
 /* ---- DOM References ---- */
-const siteHeader  = document.getElementById('header');
-const viewList    = document.getElementById('view-list');
-const viewDetail  = document.getElementById('view-detail');
-const btnBack     = document.getElementById('btn-back');
+const navbar         = document.getElementById('navbar');
+const viewList       = document.getElementById('view-list');
+const viewDetail     = document.getElementById('view-detail');
+const btnBack        = document.getElementById('btn-back');
+const membersSection = document.getElementById('members');
 
 const profileLayout = document.getElementById('profile-layout');
 const profileFlip   = document.getElementById('profile-flip');
@@ -314,35 +381,109 @@ const navIndicator = document.getElementById('nav-indicator');
 let isToggling = false;
 
 
-/* ---- Helpers ---- */
+/* ---- Member Visual Meta (Signature Colors & Gradients) ---- */
+const MEMBER_COLORS = {
+  chika:    { primary: '#FF6B35', gradient: 'var(--chika-grad)', bgGradient: 'linear-gradient(145deg, #fff2e8 0%, #ffdfcc 50%, #ffd0b5 100%)', tint: 'rgba(255, 107, 53, 0.12)', border: 'rgba(255, 107, 53, 0.35)' },
+  riko:     { primary: '#FF3366', gradient: 'var(--riko-grad)', bgGradient: 'linear-gradient(145deg, #fff0f3 0%, #ffdfe7 50%, #ffd0dc 100%)', tint: 'rgba(255, 51, 102, 0.12)', border: 'rgba(255, 51, 102, 0.35)' },
+  kanan:    { primary: '#00C98E', gradient: 'var(--kanan-grad)', bgGradient: 'linear-gradient(145deg, #effbf6 0%, #daf6ec 50%, #c2f1de 100%)', tint: 'rgba(0, 201, 142, 0.12)', border: 'rgba(0, 201, 142, 0.35)' },
+  dia:      { primary: '#D90429', gradient: 'var(--dia-grad)', bgGradient: 'linear-gradient(145deg, #fff0f2 0%, #ffdfe3 50%, #ffd0d6 100%)', tint: 'rgba(217, 4, 41, 0.12)', border: 'rgba(217, 4, 41, 0.35)' },
+  you:      { primary: '#00A8E8', gradient: 'var(--you-grad)', bgGradient: 'linear-gradient(145deg, #f0f8ff 0%, #dff0fe 50%, #c8e5fd 100%)', tint: 'rgba(0, 168, 232, 0.12)', border: 'rgba(0, 168, 232, 0.35)' },
+  yoshiko:  { primary: '#8338EC', gradient: 'var(--yoshiko-grad)', bgGradient: 'linear-gradient(145deg, #f7f2ff 0%, #eee4fd 50%, #e0d0fb 100%)', tint: 'rgba(131, 56, 236, 0.12)', border: 'rgba(131, 56, 236, 0.35)' },
+  hanamaru: { primary: '#F5A623', gradient: 'var(--hanamaru-grad)', bgGradient: 'linear-gradient(145deg, #fffbf0 0%, #fff3d4 50%, #ffe9b5 100%)', tint: 'rgba(245, 166, 35, 0.12)', border: 'rgba(245, 166, 35, 0.35)' },
+  mari:     { primary: '#B833D6', gradient: 'var(--mari-grad)', bgGradient: 'linear-gradient(145deg, #faf0fc 0%, #f4dcf9 50%, #ebc2f4 100%)', tint: 'rgba(184, 51, 214, 0.12)', border: 'rgba(184, 51, 214, 0.35)' },
+  ruby:     { primary: '#FF006E', gradient: 'var(--ruby-grad)', bgGradient: 'linear-gradient(145deg, #fff0f5 0%, #ffe0ec 50%, #ffcfdf 100%)', tint: 'rgba(255, 0, 110, 0.12)', border: 'rgba(255, 0, 110, 0.35)' }
+};
 
-/** Render a key-value object into a <dl> element */
+/* ---- Field Icon Helper ---- */
+function getFieldIconSvg(key) {
+  switch (key) {
+    case 'Year':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>';
+    case 'Sub-unit':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
+    case 'Birthday':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    case 'Blood Type':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>';
+    case 'Height':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3a2.4 2.4 0 0 1-3.4 0L2.7 18.7a2.4 2.4 0 0 1 0-3.4L15.3 2.7a2.4 2.4 0 0 1 3.4 0l2.6 2.6a2.4 2.4 0 0 1 0 3.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/></svg>';
+    case 'Hobbies':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+    case 'Birthplace':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    case 'Agency':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg>';
+    case 'Debut':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>';
+    case 'Nickname':
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>';
+    default:
+      return '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>';
+  }
+}
+
+/** Render a key-value object into structured mini-card chips */
 function renderFields(container, fields) {
   container.innerHTML = '';
   for (const [key, val] of Object.entries(fields)) {
+    const chip = document.createElement('div');
+    chip.className = 'profile-field-chip';
+
+    const iconBadge = document.createElement('span');
+    iconBadge.className = 'field-chip-icon';
+    iconBadge.innerHTML = getFieldIconSvg(key);
+
+    const info = document.createElement('div');
+    info.className = 'field-chip-info';
+
     const dt = document.createElement('dt');
+    dt.className = 'field-chip-label';
     dt.textContent = key;
+
     const dd = document.createElement('dd');
+    dd.className = 'field-chip-val';
     dd.textContent = val;
-    container.appendChild(dt);
-    container.appendChild(dd);
+
+    info.appendChild(dt);
+    info.appendChild(dd);
+    chip.appendChild(iconBadge);
+    chip.appendChild(info);
+    container.appendChild(chip);
   }
 }
 
 /** Get the CSS accent color for a member key */
 function getAccent(memberKey) {
+  const member = MEMBER_COLORS[memberKey];
+  if (member) return member.primary;
   return getComputedStyle(document.documentElement)
     .getPropertyValue('--' + memberKey)
     .trim();
 }
 
 
+/* ---- Detail View Logic ---- */
+
 function showDetail(memberKey) {
   const data = MEMBERS[memberKey];
   if (!data) return;
 
-  const accent = getAccent(memberKey);
-  document.documentElement.style.setProperty('--detail-accent', accent);
+  const colors = MEMBER_COLORS[memberKey] || {
+    primary: '#2e86c1',
+    gradient: 'linear-gradient(135deg, #1a5276, #2e86c1)',
+    bgGradient: 'linear-gradient(145deg, #f0f8ff 0%, #e0f0fe 100%)',
+    tint: 'rgba(46, 134, 193, 0.12)',
+    border: 'rgba(46, 134, 193, 0.35)'
+  };
+
+  document.documentElement.style.setProperty('--detail-accent', colors.primary);
+  document.documentElement.style.setProperty('--detail-accent-tint', colors.tint);
+  document.documentElement.style.setProperty('--detail-accent-border', colors.border);
+  document.documentElement.style.setProperty('--detail-gradient', colors.gradient);
+  document.documentElement.style.setProperty('--detail-bg-gradient', colors.bgGradient);
+
+  document.body.classList.add('in-detail-view');
+  profileLayout.setAttribute('data-member', memberKey);
 
   /* Populate character pane */
   if (data.char.image) {
@@ -350,7 +491,7 @@ function showDetail(memberKey) {
     avatarChar.classList.add('has-image');
   } else {
     avatarChar.textContent = data.char.initial;
-    avatarChar.style.background = accent;
+    avatarChar.style.background = colors.primary;
     avatarChar.classList.remove('has-image');
   }
   charName.textContent = data.char.name;
@@ -363,7 +504,7 @@ function showDetail(memberKey) {
     avatarSeiyuu.classList.add('has-image');
   } else {
     avatarSeiyuu.textContent = data.seiyuu.initial;
-    avatarSeiyuu.style.background = accent;
+    avatarSeiyuu.style.background = colors.primary;
     avatarSeiyuu.classList.remove('has-image');
   }
   seiyuuName.textContent = data.seiyuu.name;
@@ -380,9 +521,18 @@ function showDetail(memberKey) {
   updateNav();
 
   /* Switch views */
-  siteHeader.style.display = 'none';
   viewList.classList.add('hidden');
   viewDetail.classList.add('visible');
+
+  /* Hide other sections and wave dividers, keep navbar */
+  document.querySelectorAll('.hero-section, .about-section, .discography-section, .site-footer, .section-wave-divider').forEach(function(el) {
+    el.style.display = 'none';
+  });
+  const sectionContainer = membersSection.querySelector('.section-container');
+  if (sectionContainer) {
+    sectionContainer.style.display = 'none';
+  }
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -395,21 +545,47 @@ function updateNav() {
 
   /* Previous button (wraps to last) */
   const prevIdx = (currentIndex - 1 + total) % total;
-  prevLabel.textContent = MEMBERS[MEMBER_KEYS[prevIdx]].char.name.split(' ').pop();
+  const prevKey = MEMBER_KEYS[prevIdx];
+  const prevMember = MEMBERS[prevKey];
+  const prevColors = MEMBER_COLORS[prevKey] || { primary: '#2e86c1', tint: 'rgba(46, 134, 193, 0.12)' };
+  prevLabel.textContent = prevMember.char.name.split(' ').pop();
+  btnPrev.style.setProperty('--target-color', prevColors.primary);
+  btnPrev.style.setProperty('--target-tint', prevColors.tint);
 
   /* Next button (wraps to first) */
   const nextIdx = (currentIndex + 1) % total;
-  nextLabel.textContent = MEMBERS[MEMBER_KEYS[nextIdx]].char.name.split(' ').pop();
+  const nextKey = MEMBER_KEYS[nextIdx];
+  const nextMember = MEMBERS[nextKey];
+  const nextColors = MEMBER_COLORS[nextKey] || { primary: '#2e86c1', tint: 'rgba(46, 134, 193, 0.12)' };
+  nextLabel.textContent = nextMember.char.name.split(' ').pop();
+  btnNext.style.setProperty('--target-color', nextColors.primary);
+  btnNext.style.setProperty('--target-tint', nextColors.tint);
 }
 
 
-/* ---- View: Back to List ---- */
+/* ---- Restore All Sections & Switch back to Grid ---- */
+
+function restoreAllSections() {
+  if (viewDetail && viewDetail.classList.contains('visible')) {
+    viewDetail.classList.remove('visible');
+    viewList.classList.remove('hidden');
+    document.body.classList.remove('in-detail-view');
+
+    /* Restore all page sections and wave dividers */
+    document.querySelectorAll('.hero-section, .about-section, .discography-section, .site-footer, .section-wave-divider').forEach(function(el) {
+      el.style.display = '';
+    });
+    const sectionContainer = membersSection.querySelector('.section-container');
+    if (sectionContainer) {
+      sectionContainer.style.display = '';
+    }
+  }
+}
 
 function showList() {
-  viewDetail.classList.remove('visible');
-  viewList.classList.remove('hidden');
-  siteHeader.style.display = '';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  restoreAllSections();
+  /* Smooth scroll to members section */
+  membersSection.scrollIntoView({ behavior: 'smooth' });
 }
 
 
@@ -450,22 +626,25 @@ document.querySelectorAll('.card-wrapper').forEach(function (wrapper) {
 });
 
 /* Back button */
-btnBack.addEventListener('click', showList);
+if (btnBack) {
+  btnBack.addEventListener('click', showList);
+}
 
 /* Photo click → toggle character ⇄ seiyuu */
-profileFlip.addEventListener('click', function () {
-  const isCurrentlySeiyuu = profileLayout.classList.contains('show-seiyuu');
-  
-  if (isCurrentlySeiyuu) {
-    toggleBio(bioSeiyuu, bioChar, false);
-  } else {
-    toggleBio(bioChar, bioSeiyuu, true);
-  }
-});
+if (profileFlip) {
+  profileFlip.addEventListener('click', function () {
+    const isCurrentlySeiyuu = profileLayout.classList.contains('show-seiyuu');
+    
+    if (isCurrentlySeiyuu) {
+      toggleBio(bioSeiyuu, bioChar, false);
+    } else {
+      toggleBio(bioChar, bioSeiyuu, true);
+    }
+  });
+}
 
 /* Previous / Next navigation with 3D Flip */
 function navigateWithFlip(memberKey, direction) {
-  // Prevent multiple clicks during animation
   if (profileLayout.classList.contains('anim-out') || profileLayout.classList.contains('anim-in')) return;
 
   const outClass = direction === 'next' ? 'layout-flip-out-next' : 'layout-flip-out-prev';
@@ -473,239 +652,383 @@ function navigateWithFlip(memberKey, direction) {
   
   profileLayout.classList.add('anim-out', outClass);
   
-  // Wait half of the flip (250ms)
   setTimeout(() => {
-    // Swap content while card is edge-on
     showDetail(memberKey);
     
-    // Switch to incoming rotation state
     profileLayout.classList.remove('anim-out', outClass);
     profileLayout.classList.add(inClass);
     
-    // Force reflow
     void profileLayout.offsetWidth;
     
-    // Animate to 0 degrees
     profileLayout.classList.remove(inClass);
     profileLayout.classList.add('anim-in');
     
-    // Cleanup after animation ends
     setTimeout(() => {
       profileLayout.classList.remove('anim-in');
     }, 250);
   }, 250);
 }
 
-btnPrev.addEventListener('click', function () {
-  const prevIdx = (currentIndex - 1 + MEMBER_KEYS.length) % MEMBER_KEYS.length;
-  navigateWithFlip(MEMBER_KEYS[prevIdx], 'prev');
-});
-
-btnNext.addEventListener('click', function () {
-  const nextIdx = (currentIndex + 1) % MEMBER_KEYS.length;
-  navigateWithFlip(MEMBER_KEYS[nextIdx], 'next');
-});
-
-
-/* ============================================
-   Music Player (Local Audio)
-   ============================================ */
-
-const musicBar     = document.getElementById('music-bar');
-const musicToggle  = document.getElementById('music-toggle');
-const audioPlayer  = document.getElementById('audio-player');
-if (audioPlayer) audioPlayer.volume = 0.25; // Default to 25% volume
-const audioPlayBtn = document.getElementById('audio-play');
-const progressWrap = document.getElementById('audio-progress-wrap');
-const progressBar  = document.getElementById('audio-progress-bar');
-const timeCurrent  = document.getElementById('audio-current');
-const timeDuration = document.getElementById('audio-duration');
-const trackNameEl  = document.getElementById('audio-track-name');
-const trackBtns    = document.querySelectorAll('.track-btn');
-
-/** Format seconds to m:ss */
-function formatTime(sec) {
-  if (isNaN(sec)) return '0:00';
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return m + ':' + (s < 10 ? '0' : '') + s;
+if (btnPrev) {
+  btnPrev.addEventListener('click', function () {
+    const prevIdx = (currentIndex - 1 + MEMBER_KEYS.length) % MEMBER_KEYS.length;
+    navigateWithFlip(MEMBER_KEYS[prevIdx], 'prev');
+  });
 }
 
-/* Toggle panel open/close */
-musicToggle.addEventListener('click', function () {
-  musicBar.classList.toggle('open');
-});
-
-/* Play / Pause */
-audioPlayBtn.addEventListener('click', function () {
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-});
-
-audioPlayer.addEventListener('play', function () {
-  audioPlayBtn.classList.add('playing');
-});
-
-audioPlayer.addEventListener('pause', function () {
-  audioPlayBtn.classList.remove('playing');
-});
-
-/* Progress updates */
-audioPlayer.addEventListener('timeupdate', function () {
-  const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  progressBar.style.width = pct + '%';
-  timeCurrent.textContent = formatTime(audioPlayer.currentTime);
-});
-
-audioPlayer.addEventListener('loadedmetadata', function () {
-  timeDuration.textContent = formatTime(audioPlayer.duration);
-});
-
-/* Click to seek */
-progressWrap.addEventListener('click', function (e) {
-  const rect = this.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  audioPlayer.currentTime = pct * audioPlayer.duration;
-});
-
-/* Track selection */
-trackBtns.forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    const src = this.dataset.src;
-    const name = this.textContent;
-
-    /* Update active state */
-    trackBtns.forEach(function (b) { b.classList.remove('active'); });
-    this.classList.add('active');
-
-    /* Switch track and play */
-    audioPlayer.src = src;
-    trackNameEl.textContent = name;
-    audioPlayer.play();
+if (btnNext) {
+  btnNext.addEventListener('click', function () {
+    const nextIdx = (currentIndex + 1) % MEMBER_KEYS.length;
+    navigateWithFlip(MEMBER_KEYS[nextIdx], 'next');
   });
-});
-
-/* Auto-advance to next track when current ends */
-audioPlayer.addEventListener('ended', function () {
-  const btns = Array.from(trackBtns);
-  const activeIdx = btns.findIndex(function (b) { return b.classList.contains('active'); });
-  const nextIdx = (activeIdx + 1) % btns.length;
-  btns[nextIdx].click();
-});
-
-/* Pause music when tab is hidden, resume when active */
-let wasPlayingBeforeHidden = false;
-document.addEventListener('visibilitychange', function () {
-  if (document.hidden) {
-    wasPlayingBeforeHidden = !audioPlayer.paused;
-    if (wasPlayingBeforeHidden) {
-      audioPlayer.pause();
-    }
-  } else {
-    if (wasPlayingBeforeHidden) {
-      audioPlayer.play().catch(function() {});
-    }
-  }
-});
-
-
+}
 
 
 /* ============================================
-   Weather Machine (Background Effect)
+   Navbar Logic
    ============================================ */
 
-function initWeatherMachine() {
-  const container = document.getElementById('weather-machine');
-  if (!container) return;
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks  = document.getElementById('nav-links');
 
-  const logos = [
-    'assets/img/Chika_Logo.webp',
-    'assets/img/riko_Logo.webp',
-    'assets/img/Kanan_Logo.webp',
-    'assets/img/Dia_Logo.webp',
-    'assets/img/You_Logo.webp',
-    'assets/img/Yoshiko_Logo.webp',
-    'assets/img/Hanamaru_Logo.webp',
-    'assets/img/Mari_Logo.webp',
-    'assets/img/Ruby_Logo.webp'
-  ];
-
-  function spawnParticle() {
-    const particle = document.createElement('img');
-    const randomLogo = logos[Math.floor(Math.random() * logos.length)];
-    
-    particle.src = randomLogo;
-    particle.className = 'weather-particle';
-    
-    // Only set width, let height scale naturally
-    const size = Math.random() * 40 + 40;
-    particle.style.width = size + 'px';
-    
-    // Random horizontal position (0% to 100%)
-    const posX = Math.random() * 95;
-    particle.style.left = posX + 'vw';
-    
-    // Random fall duration (8s to 15s)
-    const duration = Math.random() * 7 + 8;
-    
-    // Assign fall animation
-    particle.style.animation = `fall ${duration}s linear forwards`;
-
-    // Remove element from DOM when animation ends to prevent memory leak
-    particle.addEventListener('animationend', function() {
-      particle.remove();
-    });
-
-    container.appendChild(particle);
-  }
-
-  // Spawn a new particle every 4.5 seconds, but only when tab is active
-  let spawnInterval = setInterval(spawnParticle, 4500);
-
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-      clearInterval(spawnInterval); // Pause spawning when tab is inactive
-    } else {
-      spawnInterval = setInterval(spawnParticle, 4500); // Resume when active
-    }
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
 
-  // Initial burst of particles so the screen isn't empty when loading
-  for (let i = 0; i < 4; i++) {
-    // Start them with random negative animation delays so they spawn already on-screen
-    setTimeout(function() {
-      const particle = document.createElement('img');
-      const randomLogo = logos[Math.floor(Math.random() * logos.length)];
-      
-      particle.src = randomLogo;
-      particle.className = 'weather-particle';
-      
-      const size = Math.random() * 40 + 40;
-      particle.style.width = size + 'px';
-      
-      const posX = Math.random() * 95;
-      particle.style.left = posX + 'vw';
-      
-      const duration = Math.random() * 10 + 10;
-      
-      // Random negative delay pushes them forward in time (they appear midway down)
-      const delay = -(Math.random() * duration);
-      
-      particle.style.animation = `fall ${duration}s linear forwards`;
-      particle.style.animationDelay = delay + 's';
+  /* Close menu when clicking outside */
+  document.addEventListener('click', function (e) {
+    if (!navbar.contains(e.target)) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+  });
+}
 
-      particle.addEventListener('animationend', function() {
-        particle.remove();
+/* Navbar links click handling: restore sections if detail is open, close mobile menu */
+document.querySelectorAll('.nav-link, .nav-logo, #hero-cta').forEach(function (el) {
+  el.addEventListener('click', function () {
+    if (hamburger && navLinks) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+    restoreAllSections();
+  });
+});
+
+/* Scroll effect: solid background */
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 40) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+/* Active link tracking via IntersectionObserver */
+const sections = document.querySelectorAll('section[id], .hero-section[id]');
+const navLinksAll = document.querySelectorAll('.nav-link');
+
+const observerOptions = {
+  rootMargin: '-40% 0px -40% 0px',
+  threshold: 0
+};
+
+const sectionObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinksAll.forEach(function (link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+        }
       });
+    }
+  });
+}, observerOptions);
 
-      container.appendChild(particle);
-    }, 50); // slight timeout to ensure DOM is ready
+sections.forEach(function (section) {
+  sectionObserver.observe(section);
+});
+
+
+/* ============================================
+   About Section: Sub-unit Cards (from MEMBERS data)
+   ============================================ */
+
+function buildSubunitCards() {
+  const subunits = {};
+  
+  /* Extract sub-unit info from member data */
+  for (const [key, data] of Object.entries(MEMBERS)) {
+    const unit = data.char.fields['Sub-unit'];
+    if (!subunits[unit]) {
+      subunits[unit] = [];
+    }
+    subunits[unit].push(data.char.name);
+  }
+
+  const grid = document.getElementById('subunit-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  const unitMeta = {
+    'CYaRon!': {
+      color: '#ff6b35',
+      icon: '⚡',
+      class: 'subunit-cyaron',
+      tagline: 'Energetic & Pop',
+      desc: 'Formed by Chika, You, and Ruby — delivering cheering, high-energy pop anthems full of sunshine.'
+    },
+    'AZALEA': {
+      color: '#00c98e',
+      icon: '🌸',
+      class: 'subunit-azalea',
+      tagline: 'Pure & Electro-Pop',
+      desc: 'Formed by Kanan, Dia, and Hanamaru — known for gentle, elegant, and atmospheric electronic melodies.'
+    },
+    'Guilty Kiss': {
+      color: '#8338ec',
+      icon: '💋',
+      class: 'subunit-guiltykiss',
+      tagline: 'Gothic Rock & Electronic',
+      desc: 'Formed by Riko, Yoshiko, and Mari — bringing hard-hitting rock vibes, deep bass, and stylish vocals.'
+    }
+  };
+
+  for (const [unitName, members] of Object.entries(subunits)) {
+    const meta = unitMeta[unitName] || { color: '#2e86c1', icon: '♪', class: '', tagline: 'Sub-unit', desc: '' };
+    
+    const card = document.createElement('div');
+    card.className = 'subunit-card fade-in ' + meta.class;
+    
+    const header = document.createElement('div');
+    header.className = 'subunit-card-top';
+
+    const iconBadge = document.createElement('span');
+    iconBadge.className = 'subunit-genre-icon';
+    iconBadge.textContent = meta.icon;
+
+    const tagEl = document.createElement('span');
+    tagEl.className = 'subunit-card-tag';
+    tagEl.textContent = meta.tagline;
+
+    header.appendChild(iconBadge);
+    header.appendChild(tagEl);
+
+    const nameEl = document.createElement('h4');
+    nameEl.className = 'subunit-card-name';
+    nameEl.textContent = unitName;
+    
+    const descEl = document.createElement('p');
+    descEl.className = 'subunit-card-desc';
+    descEl.textContent = meta.desc;
+
+    const membersWrap = document.createElement('div');
+    membersWrap.className = 'subunit-card-members';
+    
+    const membersPills = document.createElement('div');
+    membersPills.className = 'subunit-pills';
+    members.forEach(function (m) {
+      const pill = document.createElement('span');
+      pill.className = 'member-pill';
+      pill.textContent = m.split(' ').pop();
+      membersPills.appendChild(pill);
+    });
+    membersWrap.appendChild(membersPills);
+    
+    card.appendChild(header);
+    card.appendChild(nameEl);
+    card.appendChild(descEl);
+    card.appendChild(membersWrap);
+    grid.appendChild(card);
   }
 }
 
-// Initialize on load
-document.addEventListener('DOMContentLoaded', initWeatherMachine);
+buildSubunitCards();
+
+
+/* ============================================
+   Top Songs Section: Render
+   ============================================ */
+
+function renderTopSongs() {
+  var podium = document.getElementById('disco-podium');
+  var leaderboard = document.getElementById('disco-leaderboard');
+  if (!podium || !leaderboard) return;
+
+  podium.innerHTML = '';
+  leaderboard.innerHTML = '';
+
+  /* 1. Render Podium Cards (Rank 1, 2, 3) */
+  var top3 = TOP_SONGS.filter(function (s) { return s.rank <= 3; });
+  top3.forEach(function (song) {
+    var card = document.createElement('div');
+    card.className = 'disco-card fade-in';
+    if (song.rank === 1) card.classList.add('disco-card--podium', 'disco-card--podium-1');
+    else if (song.rank === 2) card.classList.add('disco-card--podium', 'disco-card--podium-2');
+    else if (song.rank === 3) card.classList.add('disco-card--podium', 'disco-card--podium-3');
+
+    /* Cover art area with gradient + rank badge */
+    var cover = document.createElement('div');
+    cover.className = 'disco-cover';
+
+    var gradientEl = document.createElement('div');
+    gradientEl.className = 'disco-cover-gradient';
+    gradientEl.style.background = song.gradient;
+
+    var vinylCircle = document.createElement('div');
+    vinylCircle.className = 'disco-vinyl-ring';
+
+    /* Year label in top-left corner */
+    var yearLabel = document.createElement('div');
+    yearLabel.className = 'disco-jacket-header';
+    yearLabel.textContent = song.year;
+
+    /* Top 3 Podium Pill (Top Right) */
+    var podiumPill = document.createElement('span');
+    podiumPill.className = 'disco-podium-pill';
+    if (song.rank === 1) {
+      podiumPill.classList.add('disco-podium--gold');
+      podiumPill.textContent = '👑 TOP 1';
+    } else if (song.rank === 2) {
+      podiumPill.classList.add('disco-podium--silver');
+      podiumPill.textContent = '🥈 TOP 2';
+    } else if (song.rank === 3) {
+      podiumPill.classList.add('disco-podium--bronze');
+      podiumPill.textContent = '🥉 TOP 3';
+    }
+    cover.appendChild(podiumPill);
+
+    /* Rank Disc for high contrast readability */
+    var rankDisc = document.createElement('div');
+    rankDisc.className = 'disco-rank-disc';
+    if (song.rank === 1) rankDisc.classList.add('disco-rank-disc--gold');
+    else if (song.rank === 2) rankDisc.classList.add('disco-rank-disc--silver');
+    else if (song.rank === 3) rankDisc.classList.add('disco-rank-disc--bronze');
+
+    /* Rank badge (number) */
+    var rankBadge = document.createElement('span');
+    rankBadge.className = 'disco-rank-badge';
+    if (song.rank === 1) rankBadge.classList.add('disco-rank--gold');
+    else if (song.rank === 2) rankBadge.classList.add('disco-rank--silver');
+    else if (song.rank === 3) rankBadge.classList.add('disco-rank--bronze');
+    rankBadge.textContent = '#' + song.rank;
+
+    rankDisc.appendChild(rankBadge);
+
+    cover.appendChild(gradientEl);
+    cover.appendChild(vinylCircle);
+    cover.appendChild(yearLabel);
+    cover.appendChild(rankDisc);
+
+    /* Body: song title */
+    var body = document.createElement('div');
+    body.className = 'disco-card-body';
+
+    var title = document.createElement('div');
+    title.className = 'disco-card-title';
+    title.textContent = song.title;
+
+    body.appendChild(title);
+
+    card.appendChild(cover);
+    card.appendChild(body);
+    podium.appendChild(card);
+  });
+
+  /* 2. Render Leaderboard List (Rank 4 to 10) */
+  /* User directive: "aksen warna 4-10 dibuat sama." -> uniform accent color */
+  var ranks4to10 = TOP_SONGS.filter(function (s) { return s.rank >= 4; });
+  ranks4to10.forEach(function (song) {
+    var row = document.createElement('div');
+    row.className = 'disco-row fade-in';
+
+    var leftCol = document.createElement('div');
+    leftCol.className = 'disco-row-left';
+
+    var rankNum = document.createElement('span');
+    rankNum.className = 'disco-row-rank';
+    rankNum.textContent = '#' + song.rank;
+
+    var titleEl = document.createElement('span');
+    titleEl.className = 'disco-row-title';
+    titleEl.textContent = song.title;
+
+    leftCol.appendChild(rankNum);
+    leftCol.appendChild(titleEl);
+
+    var rightCol = document.createElement('div');
+    rightCol.className = 'disco-row-right';
+
+    var yearTag = document.createElement('span');
+    yearTag.className = 'disco-row-year';
+    yearTag.textContent = song.year;
+
+    rightCol.appendChild(yearTag);
+
+    row.appendChild(leftCol);
+    row.appendChild(rightCol);
+    leaderboard.appendChild(row);
+  });
+
+  /* Observe dynamically rendered elements if reveal observer is active */
+  if (window.__scrollRevealObserver) {
+    podium.querySelectorAll('.disco-card.fade-in:not(.in-view)').forEach(function (el) {
+      window.__scrollRevealObserver.observe(el);
+    });
+    leaderboard.querySelectorAll('.disco-row.fade-in:not(.in-view)').forEach(function (el) {
+      window.__scrollRevealObserver.observe(el);
+    });
+  }
+}
+
+/* Initial render */
+renderTopSongs();
+
+
+/* ============================================
+   Fade-in Scroll Reveal Animation (designrev1.md)
+   ============================================ */
+
+function initScrollReveal() {
+  var revealCallback = function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  /* Main observer — cards, headings, etc. */
+  var revealObserver = new IntersectionObserver(revealCallback, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  /* Lenient observer — for elements near the page bottom (footer) that
+     can never satisfy a large rootMargin / threshold combination. */
+  var bottomObserver = new IntersectionObserver(revealCallback, {
+    threshold: 0,
+    rootMargin: '0px 0px 0px 0px'
+  });
+
+  window.__scrollRevealObserver = revealObserver;
+
+  // Observe all elements with .fade-in that are not yet .in-view
+  document.querySelectorAll('.fade-in:not(.in-view)').forEach(function (el) {
+    // Use the lenient observer for elements inside the footer
+    if (el.closest('.site-footer')) {
+      bottomObserver.observe(el);
+    } else {
+      revealObserver.observe(el);
+    }
+  });
+}
+
+initScrollReveal();
+
