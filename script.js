@@ -1042,17 +1042,17 @@ function initDailyLike() {
   var likeText = document.getElementById('like-btn-text');
   var counterBadge = document.getElementById('like-counter-badge');
   var counterNum = document.getElementById('like-counter-number');
+  var syncDot = document.getElementById('like-sync-dot');
   var likeHint = document.getElementById('like-hint');
   var particlesContainer = document.getElementById('like-particles-container');
 
   if (!likeBtn || !counterNum) return;
 
-  var API_BASE = 'https://abacus.jasoncameron.dev';
-  var NAMESPACE = 'aqours-showcase';
-  var KEY = 'daily-like';
+  var API_BASE = 'https://countapi.mileshilliard.com/api/v1';
+  var KEY = 'aqours_showcase_daily_like';
   var LOCAL_KEY = 'aqours-last-liked';
   var CACHE_KEY = 'aqours-cached-likes';
-  var FALLBACK_COUNT = 1258;
+  var FALLBACK_COUNT = 1260;
 
   // Format today's date YYYY-MM-DD
   var todayStr = new Date().toISOString().slice(0, 10);
@@ -1061,33 +1061,51 @@ function initDailyLike() {
   // Current counter state
   var currentCount = parseInt(localStorage.getItem(CACHE_KEY), 10) || FALLBACK_COUNT;
 
+  // Helper to update sync indicator dot
+  function setSyncStatus(status, tooltip) {
+    if (!syncDot) return;
+    syncDot.classList.remove('synced', 'cached');
+    if (status === 'synced') {
+      syncDot.classList.add('synced');
+      syncDot.title = tooltip || 'Live synced with server (' + currentCount + ')';
+    } else if (status === 'cached') {
+      syncDot.classList.add('cached');
+      syncDot.title = tooltip || 'Using local count (offline / sync pending)';
+    } else {
+      syncDot.title = 'Connecting to counter server...';
+    }
+  }
+
   // Set initial UI based on local storage
   if (hasLikedToday) {
     setLikedState(false);
   }
 
-  // Display initial cached/fallback number
+  // Display initial cached/fallback number immediately
   counterNum.textContent = currentCount.toLocaleString('en-US');
 
   // Fetch latest global count from API
-  fetchWithTimeout(API_BASE + '/get/' + NAMESPACE + '/' + KEY, 4000)
+  fetchWithTimeout(API_BASE + '/get/' + KEY, 6000)
     .then(function (res) {
-      if (!res.ok) throw new Error('Status ' + res.status);
+      if (!res.ok) {
+        throw new Error('HTTP status ' + res.status + ' (' + res.statusText + ')');
+      }
       return res.json();
     })
     .then(function (data) {
       if (data && typeof data.value === 'number') {
-        var newGlobal = data.value;
-        if (newGlobal > currentCount) {
-          currentCount = newGlobal;
-          localStorage.setItem(CACHE_KEY, currentCount);
-          counterNum.textContent = currentCount.toLocaleString('en-US');
-        }
+        console.log('[Daily Like] ✅ Live counter synced from server. Total:', data.value);
+        currentCount = data.value;
+        localStorage.setItem(CACHE_KEY, currentCount);
+        counterNum.textContent = currentCount.toLocaleString('en-US');
+        setSyncStatus('synced', 'Live synced with server (' + currentCount + ')');
+      } else {
+        throw new Error('Unexpected JSON structure: ' + JSON.stringify(data));
       }
     })
     .catch(function (err) {
-      // Silent fail: continue with cached or fallback count
-      console.warn('Daily Like API: using local cached count', err);
+      console.warn('[Daily Like] ⚠️ Server sync notice (using cached count ' + currentCount + '):', err.message);
+      setSyncStatus('cached', 'Server sync notice: ' + err.message);
     });
 
   // Handle Like click
@@ -1121,20 +1139,27 @@ function initDailyLike() {
     setLikedState(true);
 
     // 5. Send increment (+1) to global API
-    fetchWithTimeout(API_BASE + '/hit/' + NAMESPACE + '/' + KEY, 5000)
+    fetchWithTimeout(API_BASE + '/hit/' + KEY, 6000)
       .then(function (res) {
-        if (!res.ok) throw new Error('Status ' + res.status);
+        if (!res.ok) {
+          throw new Error('HTTP status ' + res.status + ' (' + res.statusText + ')');
+        }
         return res.json();
       })
       .then(function (data) {
-        if (data && typeof data.value === 'number' && data.value > currentCount) {
-          currentCount = data.value;
-          localStorage.setItem(CACHE_KEY, currentCount);
-          counterNum.textContent = currentCount.toLocaleString('en-US');
+        if (data && typeof data.value === 'number') {
+          console.log('[Daily Like] ✅ Hit recorded on server. New total:', data.value);
+          if (data.value !== currentCount) {
+            currentCount = data.value;
+            localStorage.setItem(CACHE_KEY, currentCount);
+            counterNum.textContent = currentCount.toLocaleString('en-US');
+          }
+          setSyncStatus('synced', 'Live synced with server (' + currentCount + ')');
         }
       })
       .catch(function (err) {
-        console.warn('Daily Like API hit failed, count preserved locally:', err);
+        console.warn('[Daily Like] ⚠️ Hit request warning (count preserved locally):', err.message);
+        setSyncStatus('cached', 'Hit recorded locally, server sync failed: ' + err.message);
       });
   });
 
@@ -1206,7 +1231,7 @@ function initDailyLike() {
   function fetchWithTimeout(url, timeoutMs) {
     return new Promise(function (resolve, reject) {
       var timer = setTimeout(function () {
-        reject(new Error('Request timed out'));
+        reject(new Error('Request timed out after ' + timeoutMs + 'ms'));
       }, timeoutMs);
 
       fetch(url)

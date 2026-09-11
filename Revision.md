@@ -407,21 +407,25 @@ Saya mau menambahkan background berupa kolase foto yang bergerak (moving collage
 ---
 
 ## 10. Fitur Daily Like — Total Like Bersama Semua Pengunjung
-*(Sumber asli: `count.md`)*
+*(Sumber asli: `count.md` & `countapi.md`)*
 
 ### Konsep
 Tombol "Press this if you love Aqours ❤️" di section Home. Setiap pengunjung bisa klik **sekali per hari**, dan hitungan total like-nya **sama untuk semua orang** (bukan cuma tersimpan di browser masing-masing) — tanpa perlu bikin backend/database/login sendiri, memanfaatkan counter API publik gratis.
 
-### Cara Kerja
-1. **Total Like (Global via Abacus API)**:
-   - Endpoint: `https://abacus.jasoncameron.dev/get/aqours-showcase/daily-like` (ambil total) & `/hit/aqours-showcase/daily-like` (increment +1).
-   - Format separator ribuan (`1,258`) dengan animasi *count-up* halus.
+### Cara Kerja & Penyempurnaan Sinkronisasi
+1. **Total Like (Global via CountAPI Cloudflare CDN)**:
+   - Base URL: `https://countapi.mileshilliard.com/api/v1`
+   - Key: `aqours_showcase_daily_like`
+   - Endpoint: `/get/aqours_showcase_daily_like` (ambil total) & `/hit/aqours_showcase_daily_like` (increment +1).
+   - Layanan ini berjalan di atas Cloudflare edge CDN, bebas cold-start (< 1 detik), mendukung CORS penuh, dan mengembalikan JSON valid.
 2. **Batasan 1x per Hari (localStorage)**:
    - Menyimpan tanggal hari ini (`YYYY-MM-DD`) di `localStorage['aqours-last-liked']`.
    - Mengunci tombol ke state disabled dan teks *"Already loved today! Come back tomorrow ✨"*.
-3. **Animasi & Interaksi**:
+3. **Animasi & Indikator Sinkronisasi**:
    - Denyut ikon hati (*heartbeat animation*).
    - Efek ledakan partikel hati (*floating heart burst*) saat diklik.
    - *Bump animation* pada badge angka counter saat bertambah.
-4. **Graceful Fallback**:
+   - **Indikator Titik Sinkronisasi** (`.like-sync-dot`): Titik kecil di dalam badge counter yang menyala hijau (`synced`) saat data berhasil tersinkron dengan server global.
+4. **Graceful Fallback & Log Transparan**:
    - Jika jaringan/API offline, sistem secara otomatis memakai angka cache lokal terakhir di `localStorage['aqours-cached-likes']` sehingga UI tidak rusak dan animasi klik lokal tetap berjalan lancar.
+   - Log console informatif (`[Daily Like] ✅ ...`) untuk mempermudah pengecekan status server tanpa menyembunyikan error.
