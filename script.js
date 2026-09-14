@@ -11,7 +11,7 @@ const MEMBERS = {
       name: 'Takami Chika',
       nameJp: '高海 千歌',
       initial: '千',
-      image: 'assets/img/chika.png',
+      image: 'assets/img/chika.webp',
       fields: {
         'Year': '2nd Year',
         'Sub-unit': 'CYaRon!',
@@ -25,7 +25,7 @@ const MEMBERS = {
       name: 'Inami Anju',
       nameJp: '伊波 杏樹',
       initial: '杏',
-      image: 'assets/img/seiyuu/anchan-fix.png',
+      image: 'assets/img/seiyuu/anchan-fix.webp',
       fields: {
         'Birthday': 'February 7, 1996',
         'Birthplace': 'Kanagawa',
@@ -41,7 +41,7 @@ const MEMBERS = {
       name: 'Sakurauchi Riko',
       nameJp: '桜内 梨子',
       initial: '梨',
-      image: 'assets/img/riko.png',
+      image: 'assets/img/riko.webp',
       fields: {
         'Year': '2nd Year',
         'Sub-unit': 'Guilty Kiss',
@@ -55,7 +55,7 @@ const MEMBERS = {
       name: 'Aida Rikako',
       nameJp: '逢田 梨香子',
       initial: '莉',
-      image: 'assets/img/seiyuu/rikako-fix.png',
+      image: 'assets/img/seiyuu/rikako-fix.webp',
       fields: {
         'Birthday': 'August 8, 1992',
         'Birthplace': 'Tokyo',
@@ -71,7 +71,7 @@ const MEMBERS = {
       name: 'Matsuura Kanan',
       nameJp: '松浦 果南',
       initial: '果',
-      image: 'assets/img/kanan.png',
+      image: 'assets/img/kanan.webp',
       fields: {
         'Year': '3rd Year',
         'Sub-unit': 'AZALEA',
@@ -85,7 +85,7 @@ const MEMBERS = {
       name: 'Suwa Nanaka',
       nameJp: '諏訪 ななか',
       initial: '諏',
-      image: 'assets/img/seiyuu/suwawa-fix.png',
+      image: 'assets/img/seiyuu/suwawa-fix.webp',
       fields: {
         'Birthday': 'November 2, 1994',
         'Birthplace': 'Saitama',
@@ -101,7 +101,7 @@ const MEMBERS = {
       name: 'Kurosawa Dia',
       nameJp: '黒澤 ダイヤ',
       initial: '黛',
-      image: 'assets/img/dia.png',
+      image: 'assets/img/dia.webp',
       fields: {
         'Year': '3rd Year',
         'Sub-unit': 'AZALEA',
@@ -115,7 +115,7 @@ const MEMBERS = {
       name: 'Komiya Arisa',
       nameJp: '小宮 有紗',
       initial: '有',
-      image: 'assets/img/seiyuu/arisa-fix.png',
+      image: 'assets/img/seiyuu/arisa-fix.webp',
       fields: {
         'Birthday': 'February 5, 1994',
         'Birthplace': 'Tochigi',
@@ -131,7 +131,7 @@ const MEMBERS = {
       name: 'Watanabe You',
       nameJp: '渡辺 曜',
       initial: '曜',
-      image: 'assets/img/you.png',
+      image: 'assets/img/you.webp',
       fields: {
         'Year': '2nd Year',
         'Sub-unit': 'CYaRon!',
@@ -145,7 +145,7 @@ const MEMBERS = {
       name: 'Saitō Shuka',
       nameJp: '斉藤 朱夏',
       initial: '朱',
-      image: 'assets/img/seiyuu/shuka-fix.png',
+      image: 'assets/img/seiyuu/shuka-fix.webp',
       fields: {
         'Birthday': 'August 16, 1996',
         'Birthplace': 'Saitama',
@@ -161,7 +161,7 @@ const MEMBERS = {
       name: 'Tsushima Yoshiko',
       nameJp: '津島 善子',
       initial: '善',
-      image: 'assets/img/yohane.png',
+      image: 'assets/img/yohane.webp',
       fields: {
         'Year': '1st Year',
         'Sub-unit': 'Guilty Kiss',
@@ -175,7 +175,7 @@ const MEMBERS = {
       name: 'Kobayashi Aika',
       nameJp: '小林 愛香',
       initial: '愛',
-      image: 'assets/img/seiyuu/aikyan-fix.png',
+      image: 'assets/img/seiyuu/aikyan-fix.webp',
       fields: {
         'Birthday': 'October 23, 1993',
         'Birthplace': 'Kanagawa',
@@ -191,7 +191,7 @@ const MEMBERS = {
       name: 'Kunikida Hanamaru',
       nameJp: '国木田 花丸',
       initial: '花',
-      image: 'assets/img/hanamaru.png',
+      image: 'assets/img/hanamaru.webp',
       fields: {
         'Year': '1st Year',
         'Sub-unit': 'AZALEA',
@@ -205,7 +205,7 @@ const MEMBERS = {
       name: 'Takatsuki Kanako',
       nameJp: '高槻 かなこ',
       initial: '佳',
-      image: 'assets/img/seiyuu/kanako-fix.png',
+      image: 'assets/img/seiyuu/kanako-fix.webp',
       fields: {
         'Birthday': 'September 25, 1993',
         'Birthplace': 'Hyogo',
@@ -221,7 +221,7 @@ const MEMBERS = {
       name: 'Ohara Mari',
       nameJp: '小原 鞠莉',
       initial: '鞠',
-      image: 'assets/img/mari.png',
+      image: 'assets/img/mari.webp',
       fields: {
         'Year': '3rd Year',
         'Sub-unit': 'Guilty Kiss',
@@ -235,7 +235,7 @@ const MEMBERS = {
       name: 'Suzuki Aina',
       nameJp: '鈴木 愛奈',
       initial: '愛',
-      image: 'assets/img/seiyuu/ainyan-fix.png',
+      image: 'assets/img/seiyuu/ainyan-fix.webp',
       fields: {
         'Birthday': 'July 23, 1995',
         'Birthplace': 'Hokkaido',
@@ -251,7 +251,7 @@ const MEMBERS = {
       name: 'Kurosawa Ruby',
       nameJp: '黒澤 ルビィ',
       initial: '瑠',
-      image: 'assets/img/ruby.png',
+      image: 'assets/img/ruby.webp',
       fields: {
         'Year': '1st Year',
         'Sub-unit': 'CYaRon!',
@@ -265,7 +265,7 @@ const MEMBERS = {
       name: 'Furihata Ai',
       nameJp: '降幡 愛',
       initial: '藍',
-      image: 'assets/img/seiyuu/ai-fix.png',
+      image: 'assets/img/seiyuu/ai-fix.webp',
       fields: {
         'Birthday': 'February 19, 1994',
         'Birthplace': 'Nagano',
@@ -285,19 +285,22 @@ var TOP_SONGS = [
     rank: 1, title: "Aozora Jumping Heart", year: 2016,
     single: "Aozora Jumping Heart",
     gradient: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
-    accent: "#d4a017"
+    accent: "#d4a017",
+    cover: "assets/img/Aozora_Jumping_Heart.webp"
   },
   {
     rank: 2, title: "WATER BLUE NEW WORLD", year: 2018,
     single: "WATER BLUE NEW WORLD / WONDERFUL STORIES",
     gradient: "linear-gradient(135deg, #a8c0cc 0%, #d7d2cc 100%)",
-    accent: "#8a8a8a"
+    accent: "#8a8a8a",
+    cover: "assets/img/WATER_BLUE_NEW_WORLD_Cover.webp"
   },
   {
     rank: 3, title: "HAPPY PARTY TRAIN", year: 2017,
     single: "HAPPY PARTY TRAIN",
     gradient: "linear-gradient(135deg, #cd7f32 0%, #e8b87a 100%)",
-    accent: "#b8733e"
+    accent: "#b8733e",
+    cover: "assets/img/HAPPY_PARTY_TRAIN.webp"
   },
   {
     rank: 4, title: "Koi ni Naritai AQUARIUM", year: 2016,
@@ -872,16 +875,34 @@ function renderTopSongs() {
     else if (song.rank === 2) card.classList.add('disco-card--podium', 'disco-card--podium-2');
     else if (song.rank === 3) card.classList.add('disco-card--podium', 'disco-card--podium-3');
 
-    /* Cover art area with gradient + rank badge */
+    /* Cover art area with image + gradient overlay */
     var cover = document.createElement('div');
     cover.className = 'disco-cover';
 
-    var gradientEl = document.createElement('div');
-    gradientEl.className = 'disco-cover-gradient';
-    gradientEl.style.background = song.gradient;
+    /* Cover image (if available) */
+    if (song.cover) {
+      var coverImg = document.createElement('img');
+      coverImg.className = 'disco-cover-img';
+      coverImg.src = song.cover;
+      coverImg.alt = song.title + ' Cover Art';
+      coverImg.loading = 'lazy';
+      cover.appendChild(coverImg);
 
-    var vinylCircle = document.createElement('div');
-    vinylCircle.className = 'disco-vinyl-ring';
+      /* Dark overlay for readability on top of cover image */
+      var coverOverlay = document.createElement('div');
+      coverOverlay.className = 'disco-cover-overlay';
+      cover.appendChild(coverOverlay);
+    } else {
+      /* Fallback gradient if no cover image */
+      var gradientEl = document.createElement('div');
+      gradientEl.className = 'disco-cover-gradient';
+      gradientEl.style.background = song.gradient;
+      cover.appendChild(gradientEl);
+
+      var vinylCircle = document.createElement('div');
+      vinylCircle.className = 'disco-vinyl-ring';
+      cover.appendChild(vinylCircle);
+    }
 
     /* Year label in top-left corner */
     var yearLabel = document.createElement('div');
@@ -920,8 +941,6 @@ function renderTopSongs() {
 
     rankDisc.appendChild(rankBadge);
 
-    cover.appendChild(gradientEl);
-    cover.appendChild(vinylCircle);
     cover.appendChild(yearLabel);
     cover.appendChild(rankDisc);
 

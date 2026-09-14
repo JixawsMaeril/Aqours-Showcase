@@ -2093,6 +2093,49 @@ body.in-detail-view .members-section {
   aspect-ratio: 16 / 9.8;
 }
 
+/* Cover Art Image */
+.disco-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  z-index: 0;
+}
+
+.disco-card:hover .disco-cover-img {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
+
+/* Dark gradient overlay for text/badge readability on cover images */
+.disco-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.disco-card:hover .disco-cover-overlay {
+  opacity: 0.8;
+}
+
+/* Ensure all cover children (badges, rank disc, year) sit above the overlay */
+.disco-podium-pill,
+.disco-jacket-header,
+.disco-rank-disc {
+  z-index: 3;
+}
+
 .disco-cover-gradient {
   position: absolute;
   inset: 0;
